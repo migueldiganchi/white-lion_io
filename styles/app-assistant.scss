@@ -1,0 +1,16 @@
+@import "app-mixins.scss";
+
+.App-assistant {
+  @include box-shadow-light;
+  border: solid 3px #fce4a6;
+  position: fixed;
+  left: -333px;
+  top: -333px;
+  z-index: 999;
+  color: #111;
+  
+  &.active {
+    top: 16.2%;
+    left: 10%;
+  }
+}

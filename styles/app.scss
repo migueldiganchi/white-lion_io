@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap");
+@import "~tailwindcss/tailwind.css";
+@import "app-mixins.scss";
+@import "app-assistant.scss";
+@import "animate.css";
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
+// #E6E6E6
+
+body {
+  color: rgb(var(--foreground-rgb));
+  min-height: 100vh;
+  color: #fce4a6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  background: linear-gradient(135deg, #000000 0%, #111111 100%);
+  background-size: 600% 600%;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+// Utilities
+.bg-dark-gradient {
+  background: -webkit-linear-gradient(
+    to right,
+    #111,
+    #222,
+    #000
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #111,
+    #222,
+    #000
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.levitation {
+  animation: float 4.5s ease-in-out infinite !important;
+}
+
+.text-gold {
+  color: #fce4a6;
+}
+
+@keyframes float {
+  0% {
+    text-shadow: 0 6px 18px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    text-shadow: 0 21px 18px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-9px);
+  }
+  100% {
+    text-shadow: 0 6px 12px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+
+// App Classes
+.App-logo {
+  max-width: 190px;
+  margin: auto auto 36px;
+}
+
+.App-box {
+  @include border-radius(36px);
+  @include box-shadow-light;
+  border: solid 4.6px #fce4a6 !important;
+
+  &_white {
+    border: solid 6px #fff;
+  }
+}
+
+.App-button {
+  border-color: #fce4a6;
+  color: #fff !important;
+  transition: all 0.3s ease;
+  @include box-shadow-dark(3px);
+
+  &:hover {
+    @include box-shadow-dark(1.5px);
+  }
+
+  &_primary {
+  }
+
+  &_secondary {
+  }
+
+  &_dark {
+  }
+
+  &_light {
+  }
+}
