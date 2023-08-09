@@ -2,15 +2,34 @@
 
 .App-assistant {
   @include box-shadow-light;
+  transition: all 0.3s ease;
   border: solid 3px #fce4a6;
   position: fixed;
   left: -333px;
-  top: -333px;
+  // top: -333px;
+  top: 16.2%;
   z-index: 999;
   color: #111;
-  
+
   &.active {
-    top: 16.2%;
     left: 10%;
+  }
+
+  &_activator {
+    transition: all 0.3s ease;
+    display: inline-block;
+    position: fixed;
+    left: -333px;
+    top: -333px;
+    z-index: 999;
+
+    &.is-visible {
+      top: 27px;
+      left: 27px;
+    }
+
+    button {
+      @include bg-dark-gradient;
+    }
   }
 }

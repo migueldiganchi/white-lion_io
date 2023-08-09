@@ -62,10 +62,10 @@
 
 @mixin bg-dark-gradient {
   /* Created with https://www.css-gradient.com */
-  background: #7bbac1;
-  background: -webkit-radial-gradient(center, #7bbac1, #1a84c3);
-  background: -moz-radial-gradient(center, #7bbac1, #1a84c3);
-  background: radial-gradient(ellipse at center, #7bbac1, #1a84c3);
+  background: #333;
+  background: -webkit-radial-gradient(center, #333, #111);
+  background: -moz-radial-gradient(center, #333, #111);
+  background: radial-gradient(ellipse at center, #333, #111);
 }
 
 @mixin bg-tr {

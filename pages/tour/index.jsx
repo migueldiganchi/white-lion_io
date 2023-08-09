@@ -1,4 +1,4 @@
-// pages/vr/index.js
+2; // pages/tour/index.js
 import dynamic from "next/dynamic";
 
 const VRTourDynamic = dynamic(() => import("../../components/AppVRTour"), {

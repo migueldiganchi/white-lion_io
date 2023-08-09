@@ -54,11 +54,7 @@ export default function HomePage() {
               secretos sin límites!
             </span>
 
-            <AppButton
-              variant="primary"
-              className="text-white"
-              onClick={startConnection}
-            >
+            <AppButton variant="primary" className="text-white" href="/auth">
               ¿Cómo ingreso?
             </AppButton>
           </div>
@@ -104,6 +100,11 @@ export default function HomePage() {
           invitado a un universo donde la magia de la{" "}
           <b>Inteligencia Artificial</b> se fusiona con la realidad, brindándote
           oportunidades únicas y emocionantes
+          <br />
+          <br />
+          <a href="/tour" className="text-white">
+            <u>Tour Virtual</u>
+          </a>
         </div>
       </div>
 
