@@ -1,7 +1,7 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import * as THREE from "three";
 
-const panoramaPath = "/media/v-tours/3.jpg";
+const panoramaPath = "/media/v-tours/11.jpg";
 
 const AppTour = () => {
   const panoramaRef = useRef(null);
@@ -20,7 +20,7 @@ const AppTour = () => {
     const renderer = new THREE.WebGLRenderer({ canvas: panoramaEl });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    const geometry = new THREE.SphereGeometry(500, 60, 40);
+    const geometry = new THREE.SphereGeometry(33, 60, 40);
     geometry.scale(-1, 1, 1);
 
     const material = new THREE.MeshBasicMaterial({
@@ -30,6 +30,11 @@ const AppTour = () => {
 
     const panorama = new THREE.Mesh(geometry, material);
     scene.add(panorama);
+
+    const box = new THREE.BoxGeometry(0.2, 0.2, 0.2);
+    const mat = new THREE.MeshNormalMaterial();
+    const mesh = new THREE.Mesh(box, mat);
+    scene.add(mesh);
 
     let isDragging = false;
     let previousMouseX = 0;
@@ -48,7 +53,12 @@ const AppTour = () => {
       const deltaX = (previousMouseX - event.clientX) * 0.005;
       const deltaY = (event.clientY - previousMouseY) * 0.005;
       panorama.rotation.y += deltaX;
-      camera.rotation.x += deltaY;
+
+      // Ajusta la rotación en el eje X para controlar el movimiento vertical
+      camera.rotation.x = Math.max(
+        Math.min(camera.rotation.x + deltaY, Math.PI / 2), // Límite superior
+        -Math.PI / 2 // Límite inferior
+      );
 
       previousMouseX = event.clientX;
       previousMouseY = event.clientY;

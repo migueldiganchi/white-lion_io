@@ -82,7 +82,7 @@ const AppAssistant = () => {
         />
 
         {/* Actions Space */}
-        <div className="mt-3" />
+        <div className="mt-6" />
 
         {/* Actions */}
         <AppButton
@@ -91,11 +91,13 @@ const AppAssistant = () => {
           className="mr-3"
           isCircular
         >
-          <i className="mdi mdi-arrow-left" />
+          <i className="mdi mdi-close mr-2" />
+          Cancelar
         </AppButton>
 
         <AppButton type="submit" variant={"light"}>
           Enviar
+          <i className="mdi mdi-check ml-2" />
         </AppButton>
       </form>
     </div>,
