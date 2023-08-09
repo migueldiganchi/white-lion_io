@@ -55,6 +55,10 @@ const AppAssistant = () => {
       </AppButton>
     </div>,
 
+    <div key="locker">
+      {isActive ? <div className={"App-assistant_locker"} /> : null}
+    </div>,
+
     <div
       key="assistant"
       className={`App-assistant bg-dark-gradient p-6 max-w-[315px] rounded-3xl animate__animated animate__pulse animate_slower ${

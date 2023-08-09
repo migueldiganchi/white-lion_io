@@ -1,12 +1,11 @@
 @import "app-mixins.scss";
 
 .App-assistant {
-  @include box-shadow-light;
+  @include box-shadow;
   transition: all 0.3s ease;
   border: solid 3px #fce4a6;
   position: fixed;
   left: -333px;
-  // top: -333px;
   top: 16.2%;
   z-index: 999;
   color: #111;
@@ -15,11 +14,22 @@
     left: 10%;
   }
 
+  &_locker {
+    @include bg-tr;
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 996;
+    opacity: 0.9;
+  }
+
   &_activator {
     transition: all 0.3s ease;
     display: inline-block;
     position: fixed;
-    // left: -333px;
     left: 27px;
     top: -333px;
     z-index: 999;
