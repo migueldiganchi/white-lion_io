@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import AppInput from "./IO/AppInput";
 import AppButton from "./IO/AppButton";
 
@@ -6,6 +6,8 @@ const AppAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const [showlevitation, setShowlevitation] = useState(false);
   const [isActive, setIsActive] = useState(false);
+
+  const inputRef = useRef(null); // Referencia al input
 
   useEffect(() => {
     const levitationTimer = setTimeout(() => {
@@ -32,6 +34,9 @@ const AppAssistant = () => {
 
   const startAssistant = () => {
     setIsActive(true);
+    setTimeout(() => {
+      inputRef.current.focus();
+    }, 333);
   };
 
   const sendMessage = (e) => {
@@ -65,6 +70,7 @@ const AppAssistant = () => {
 
         {/* Text to Send */}
         <AppInput
+          ref={inputRef}
           type="text"
           value={inputValue}
           onChange={handleChange}

@@ -3,7 +3,7 @@ import "aframe";
 
 const panoramasPath = "/media/v-tours";
 const panoramas = Array.from(
-  { length: 25 },
+  { length: 3 },
   (_, index) => `${panoramasPath}/${index + 1}.jpg`
 );
 
