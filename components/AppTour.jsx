@@ -1,21 +1,13 @@
 import React, { useRef, useState, useEffect } from "react";
 import * as THREE from "three";
 
-const panoramasPath = "/media/v-tours";
-const panoramas = Array.from(
-  { length: 3 },
-  (_, index) => `${panoramasPath}/${index + 1}.jpg`
-);
+const panoramaPath = "/media/v-tours/3.jpg";
 
 const AppTour = () => {
-  const [currentPanoramaIndex, setCurrentPanoramaIndex] = useState(0);
-  const sceneRef = useRef(null);
   const panoramaRef = useRef(null);
 
   useEffect(() => {
-    const sceneEl = sceneRef.current;
     const panoramaEl = panoramaRef.current;
-
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -28,11 +20,11 @@ const AppTour = () => {
     const renderer = new THREE.WebGLRenderer({ canvas: panoramaEl });
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    const geometry = new THREE.SphereGeometry(500, 60, 40); // Aumentar el radio y la calidad
-    geometry.scale(-1, 1, 1); // Invertir la geometría para que el interior sea visible
+    const geometry = new THREE.SphereGeometry(500, 60, 40);
+    geometry.scale(-1, 1, 1);
 
     const material = new THREE.MeshBasicMaterial({
-      map: new THREE.TextureLoader().load(panoramas[currentPanoramaIndex]),
+      map: new THREE.TextureLoader().load(panoramaPath),
       side: THREE.DoubleSide,
     });
 
@@ -47,14 +39,14 @@ const AppTour = () => {
       isDragging = true;
       previousMouseX = event.clientX;
       previousMouseY = event.clientY;
-      document.body.style.cursor = "grabbing";
+      panoramaEl.style.cursor = "grabbing";
     };
 
     const handleMouseMove = (event) => {
       if (!isDragging) return;
 
-      const deltaX = (previousMouseX - event.clientX) * 0.005; // Ajustar la velocidad horizontal
-      const deltaY = (event.clientY - previousMouseY) * 0.005; // Ajustar la velocidad vertical
+      const deltaX = (previousMouseX - event.clientX) * 0.005;
+      const deltaY = (event.clientY - previousMouseY) * 0.005;
       panorama.rotation.y += deltaX;
       camera.rotation.x += deltaY;
 
@@ -64,7 +56,7 @@ const AppTour = () => {
 
     const handleMouseUp = () => {
       isDragging = false;
-      document.body.style.cursor = "grab";
+      panoramaEl.style.cursor = "grab";
     };
 
     window.addEventListener("mousedown", handleMouseDown);
@@ -94,26 +86,20 @@ const AppTour = () => {
       window.removeEventListener("mouseup", handleMouseUp);
       window.removeEventListener("resize", resizeHandler);
     };
-  }, [currentPanoramaIndex]);
-
-  const handlePanoramaClick = () => {
-    setCurrentPanoramaIndex((prevIndex) => (prevIndex + 1) % panoramas.length);
-  };
+  }, []);
 
   return (
-    <div
+    <canvas
+      ref={panoramaRef}
       style={{
         position: "fixed",
         top: 0,
         left: 0,
         width: "100%",
         height: "100%",
-        overflow: "hidden",
         cursor: "grab",
       }}
-    >
-      <canvas ref={panoramaRef} style={{ width: "100%", height: "100%" }} />
-    </div>
+    />
   );
 };
 
