@@ -19,13 +19,13 @@
     transition: all 0.3s ease;
     display: inline-block;
     position: fixed;
-    left: -333px;
+    // left: -333px;
+    left: 27px;
     top: -333px;
     z-index: 999;
 
     &.is-visible {
       top: 27px;
-      left: 27px;
     }
 
     button {
