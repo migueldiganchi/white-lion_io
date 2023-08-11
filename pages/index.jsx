@@ -1,12 +1,29 @@
+import { useContext } from "react";
+
+import AppNotification from "@/components/AppNotification";
 import AppButton from "../components/IO/AppButton";
 
+import NotificationContext from "@/store/notification-context";
+
 export default function HomePage() {
+  const notificationCtx = useContext(NotificationContext);
+  const activeNotification = notificationCtx.notification;
+
   const startConnection = () => {
     alert("@todo: Start Connection");
   };
 
   return (
     <div className="App-main py-12 px-9 max-w-[1200px] animate__animated animate__fadeIn animate_slower">
+      {/* Notification */}
+      {activeNotification && (
+        <AppNotification
+          title={activeNotification.title}
+          message={activeNotification.message}
+          variant={activeNotification.variant}
+        />
+      )}
+
       {/* Main Box */}
       <div className="mx-6 sm:mx-9 p-9 mb-6">
         {/* Logo Image */}

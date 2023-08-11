@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import AppInput from "./IO/AppInput";
 import AppButton from "./IO/AppButton";
+import NotificationContext from "@/store/notification-context";
 
 const AppAssistant = () => {
   const [inputValue, setInputValue] = useState("");
   const [showlevitation, setShowlevitation] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
+  const notificationCtx = useContext(NotificationContext);
   const inputRef = useRef(null); // Referencia al input
 
   useEffect(() => {
@@ -39,9 +41,47 @@ const AppAssistant = () => {
     }, 333);
   };
 
-  const sendMessage = (e) => {
-    alert("Going to send this message: " + inputValue);
+  const sendMessage = async (e) => {
     e.preventDefault();
+
+    const apiBaseUrl = process.env.API_URL
+      ? process.env.API_URL
+      : "http://localhost:9009";
+    const apiEndpointUrl = `${apiBaseUrl}/io`;
+
+    try {
+      const apiBody = {
+        interaction: {
+          message: inputValue,
+        },
+      };
+
+      const apiHeaders = {
+        "Content-Type": "application/json",
+      };
+
+      const apiResponse = await fetch(apiEndpointUrl, {
+        method: "POST",
+        body: JSON.stringify(apiBody),
+        headers: apiHeaders,
+      });
+      const apiResponseData = apiResponse.json();
+
+      console.log("[apiResponse]", apiResponse);
+      console.log("[apiResponseData]", apiResponseData);
+
+      notificationCtx.showNotification({
+        title: "Enviado!",
+        message: "El mensaje se ha enviado correctamente",
+        variant: "success",
+      });
+    } catch (error) {
+      notificationCtx.showNotification({
+        title: "Error",
+        message: "Ha ocurrido un iconveniente al enviar el mensaje",
+        variant: "error",
+      });
+    }
   };
 
   return [
