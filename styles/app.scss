@@ -120,7 +120,7 @@ h6 {
 }
 
 .App-notification {
-  position: absolute;
+  position: fixed;
   z-index: 9999;
   top: 0;
   left: 0;
@@ -137,4 +137,29 @@ h6 {
   left: 0;
   padding: 4.5px 9px 4.5px 0;
   @include border-radius-dots(0, 9px, 0, 0);
+}
+
+.pnlm-hotspot-base.moveScene {
+  @include bg-tr;
+  @include border-radius(36px);
+  border: solid 3px #c9c9c9;
+  color: #fce4a6;
+  padding: 6.3px 18px;
+  &:hover {
+    @include bg-dark-gradient;
+    border-color: #fce4a6;
+    color: #fff;
+  }
+}
+
+/* Cambiar la imagen de fondo */
+.pannellum {
+  background-image: url("/media/diamond.png");
+}
+
+/* Cambiar el texto de carga */
+.pannellum-loading-container .pannellum-loading-msg {
+  font-size: 16px;
+  color: #ffffff;
+  /* Agrega cualquier otro estilo que desees */
 }

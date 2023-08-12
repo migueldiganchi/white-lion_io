@@ -1,17 +1,10 @@
 const Scenes = {
-  insideOne: {
-    title: "Yate interior 1",
+  stairScene: {
+    title: "Escaleras",
     image: "../media/v-tours/1.jpg",
     pitch: -11,
     yaw: -3,
     hotSpot: {
-      flowerVase: {
-        type: "custom",
-        pitch: -16.28,
-        yaw: -1.66,
-        nameModel: "flowerVase",
-        cssClass: "hotSpotElement",
-      },
       author: {
         type: "info",
         pitch: 9,
@@ -20,27 +13,109 @@ const Scenes = {
         text: "By Miguel Diganchi - Ingeniero en Computación y Arquitecto de Software",
         cssClass: "hotSpotElement",
       },
-      nexScene: {
+
+      nextScene1: {
         type: "custom",
         pitch: -14,
         yaw: 174,
         cssClass: "moveScene",
-        scene: "insideTwo",
+        text: "Habitación Principal",
+        scene: "bedroomScene",
+      },
+
+      nextScene2: {
+        type: "custom",
+        pitch: -9,
+        yaw: 3,
+        cssClass: "moveScene",
+        text: "Sala de Estar",
+        scene: "livingroomScene",
       },
     },
   },
-  insideTwo: {
-    title: "Yate interior 2",
+
+  bedroomScene: {
+    title: "Habitación Principal",
     image: "/media/v-tours/2.jpg",
     pitch: 10,
     yaw: 180,
     hotSpot: {
-      nexScene: {
+      nextScene1: {
         type: "custom",
         pitch: -23,
         yaw: -60,
+        text: "Escaleras",
         cssClass: "moveScene",
-        scene: "insideOne",
+        scene: "stairScene",
+      },
+
+      nextScene2: {
+        type: "custom",
+        pitch: -65,
+        yaw: -122,
+        text: "Baño Principal",
+        cssClass: "moveScene",
+        scene: "bathroomScene",
+      },
+    },
+  },
+
+  bathroomScene: {
+    title: "Baño Principal",
+    image: "/media/v-tours/3.jpg",
+    pitch: 10,
+    yaw: 180,
+    hotSpot: {
+      nextScene: {
+        type: "custom",
+        text: "Habitación Principal",
+        pitch: -51,
+        yaw: 119,
+        cssClass: "moveScene",
+        scene: "bedroomScene",
+      },
+    },
+  },
+
+  livingroomScene: {
+    title: "Sala de Estar",
+    image: "/media/v-tours/25.jpg",
+    pitch: 10,
+    yaw: 180,
+    hotSpot: {
+      nextScene1: {
+        type: "custom",
+        text: "Escaleras",
+        pitch: -28,
+        yaw: 88,
+        cssClass: "moveScene",
+        scene: "stairScene",
+      },
+
+      nextScene2: {
+        type: "custom",
+        text: "Frente",
+        pitch: -22,
+        yaw: -87,
+        cssClass: "moveScene",
+        scene: "frontScene",
+      },
+    },
+  },
+
+  frontScene: {
+    title: "Sala de Estar",
+    image: "/media/v-tours/19.jpg",
+    pitch: 10,
+    yaw: 180,
+    hotSpot: {
+      nextScene: {
+        type: "custom",
+        text: "Livingroom",
+        pitch: -10,
+        yaw: 4,
+        cssClass: "moveScene",
+        scene: "livingroomScene",
       },
     },
   },

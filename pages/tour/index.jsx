@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
-const VRTourDynamic = dynamic(() => import("../../components/AppVirtualTour"), {
+import AppAssistant from "@/components/AppAssistant";
+
+const AppVirtualTour = dynamic(() => import("@/components/AppVirtualTour"), {
   ssr: false,
 });
 
-// const VRTourDynamic = dynamic(() => import("../../components/AppTour"), {
-//   ssr: false,
-// });
+export default function VRTourPage() {
+  const [isOn, setIsOn] = useState(false);
 
-const VRTourPage = () => {
   useEffect(() => {
     // Esta función se ejecutará después de que el componente se monte en el DOM
 
@@ -18,6 +18,10 @@ const VRTourPage = () => {
     if (nextDiv) {
       nextDiv.style.width = "100%";
     }
+
+    setTimeout(() => {
+      setIsOn(true);
+    }, 3681);
 
     // Limpieza: revertir los cambios cuando el componente se desmonte
     return () => {
@@ -29,9 +33,11 @@ const VRTourPage = () => {
 
   return (
     <div>
-      <VRTourDynamic />
+      {/* Assistant */}
+      <AppAssistant isOn={isOn} />
+
+      {/* App Virtual */}
+      <AppVirtualTour />
     </div>
   );
-};
-
-export default VRTourPage;
+}

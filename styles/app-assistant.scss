@@ -2,16 +2,16 @@
 
 .App-assistant {
   @include box-shadow;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in-out;
   border: solid 3px #fce4a6;
   position: fixed;
-  left: -333px;
+  right: -333px;
   top: 16.2%;
   z-index: 999;
   color: #111;
 
   &.active {
-    left: 10%;
+    right: 10%;
   }
 
   &_locker {
@@ -30,7 +30,7 @@
     transition: all 0.3s ease;
     display: inline-block;
     position: fixed;
-    left: 27px;
+    right: 27px;
     top: -333px;
     z-index: 999;
 

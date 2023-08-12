@@ -3,7 +3,7 @@ import { Pannellum } from "pannellum-react";
 import scenesData from "@/data/scenes";
 
 export default function Scene() {
-  const [scene, setScene] = useState(scenesData["insideOne"]);
+  const [scene, setScene] = useState(scenesData["stairScene"]);
   const mountRef = useRef(null);
 
   // After load all DOM we clear all prev mounted elements
@@ -18,8 +18,16 @@ export default function Scene() {
     };
   }, []);
 
+  // Open Information Modal
   const openModal = () => {
     alert("Open Information Modal");
+  };
+
+  const renderHotspot = (hotSpotDiv, args) => {
+    hotSpotDiv.classList.add("custom-tooltip");
+    var span = document.createElement("span");
+    span.innerHTML = args.text;
+    hotSpotDiv.appendChild(span);
   };
 
   // Hot Spot List
@@ -33,10 +41,11 @@ export default function Scene() {
           yaw={element.yaw}
           text={element.text}
           URL={element.url}
+          compass={true}
+          cssClass={element.cssClass}
           handleClick={() => {
             openModal();
           }}
-          cssClass={element.cssClass}
         />
       );
     else if (element.cssClass === "moveScene")
@@ -46,10 +55,13 @@ export default function Scene() {
           type={element.type}
           pitch={element.pitch}
           yaw={element.yaw}
+          text={element.text}
+          cssClass={element.cssClass}
+          tooltip={renderHotspot}
+          tooltipArg={{ text: element.text }}
           handleClick={() => {
             setScene(scenesData[element.scene]);
           }}
-          cssClass={element.cssClass}
         />
       );
   };

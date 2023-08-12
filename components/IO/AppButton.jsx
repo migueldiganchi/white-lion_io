@@ -10,6 +10,7 @@ const AppButton = ({
   href,
   type,
   isCircular,
+  disabled = false, // Agregamos la propiedad 'disabled' con valor por defecto
 }) => {
   const classes = {
     primary: "App-button App-button_primary",
@@ -23,18 +24,26 @@ const AppButton = ({
     className,
     "border border-2 rounded-full",
     isCircular ? "px-[11.1px] py-2" : "py-2 px-4",
+    disabled ? "opacity-50 cursor-not-allowed" : "", // Estilo para botón deshabilitado
   ].join(" ");
 
   if (href) {
     return (
-      <Link href={href} className={buttonClasses} onClick={onClick}>
-        {children}
+      <Link href={href} passHref>
+        <span className={buttonClasses} onClick={disabled ? (e) => e.preventDefault() : onClick}>
+          {children}
+        </span>
       </Link>
     );
   }
 
   return (
-    <button type={type || "button"} className={buttonClasses} onClick={onClick}>
+    <button
+      type={type || "button"}
+      className={buttonClasses}
+      onClick={disabled ? (e) => e.preventDefault() : onClick}
+      disabled={disabled} // Propiedad 'disabled' en el botón
+    >
       {children}
     </button>
   );
@@ -48,6 +57,7 @@ AppButton.propTypes = {
   href: PropTypes.string,
   type: PropTypes.string,
   isCircular: PropTypes.bool,
+  disabled: PropTypes.bool, // Agregamos la definición de PropTypes para 'disabled'
 };
 
 export default AppButton;

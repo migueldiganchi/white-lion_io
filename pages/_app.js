@@ -1,6 +1,5 @@
 import Head from "next/head";
 import AppFooter from "../components/AppFooter";
-import AppAssistant from "../components/AppAssistant";
 
 import { NotificationContextProvider } from "@/store/notification-context";
 
@@ -24,9 +23,6 @@ function WhiteLionApp({ Component, pageProps }) {
           href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"
         />
       </Head>
-
-      {/* Assistant */}
-      <AppAssistant key="assistant" />
 
       {/* Body */}
       <div key="whiteLionApp" className="rounded-xl text-center main-box">
