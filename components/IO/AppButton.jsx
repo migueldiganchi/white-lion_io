@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 
 const AppButton = ({
-  variant,
+  variant = "light",
   children,
   onClick,
   className,
@@ -23,14 +23,15 @@ const AppButton = ({
     classes[variant],
     className,
     "border border-2 rounded-full",
-    isCircular ? "px-[11.1px] py-2" : "py-2 px-4",
+    href ? "pt-[12px] pb-[10px]" : "",
+    isCircular ? "px-[11.1px] py-[9px]" : "py-2 px-4",
     disabled ? "opacity-50 cursor-not-allowed" : "", // Estilo para botón deshabilitado
   ].join(" ");
 
   if (href) {
     return (
-      <Link href={href} passHref>
-        <span className={buttonClasses} onClick={disabled ? (e) => e.preventDefault() : onClick}>
+      <Link href={href} passHref className={buttonClasses}>
+        <span onClick={disabled ? (e) => e.preventDefault() : onClick}>
           {children}
         </span>
       </Link>
@@ -44,7 +45,7 @@ const AppButton = ({
       onClick={disabled ? (e) => e.preventDefault() : onClick}
       disabled={disabled} // Propiedad 'disabled' en el botón
     >
-      {children}
+      <span>{children}</span>
     </button>
   );
 };

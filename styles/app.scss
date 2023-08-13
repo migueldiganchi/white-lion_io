@@ -109,10 +109,16 @@ h6 {
 }
 
 .App-button {
-  border-color: #fce4a6;
+  @include box-shadow-dark(3px);
+  border-color: #fce4a6 !important;
   color: #fff !important;
   transition: all 0.3s ease;
-  @include box-shadow-dark(3px);
+  font-size: 15.3px;
+  span {
+    font-size: 15.3px;
+    line-height: -1 !important;
+    font-weight: normal;
+  }
 
   &:hover {
     @include box-shadow-dark(1.5px);

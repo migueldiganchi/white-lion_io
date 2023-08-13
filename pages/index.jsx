@@ -13,8 +13,38 @@ export default function HomePage() {
     alert("@todo: Start Connection");
   };
 
+  const showFeature = (feature) => {
+    alert(`@todo: Show this feature ${feature.title}`);
+  };
+
+  const featuresData = [
+    {
+      id: 1,
+      title: "Soluciones Personalizadas de Vanguardia",
+      imageUrl: "/media/features/customized.png",
+    },
+    {
+      id: 2,
+      title: "Equipo Multidisciplinario de Expertos",
+      imageUrl: "/media/features/experts.png",
+    },
+    {
+      id: 3,
+      title: "Enfoque en la Innovación Disruptiva",
+      imageUrl: "/media/features/innovation.png",
+    },
+    {
+      id: 4,
+      title: "Relaciones Estratégicas y a Largo Plazo",
+      imageUrl: "/media/features/strategy.png",
+    },
+  ];
+
   return (
-    <div className="App-main py-12 px-9 max-w-[1200px] animate__animated animate__fadeIn animate_slower">
+    <div
+      key="main"
+      className="App-main py-12 px-9 max-w-[1200px] animate__animated animate__fadeIn animate_slower"
+    >
       {/* Notification */}
       {activeNotification && (
         <AppNotification
@@ -58,7 +88,7 @@ export default function HomePage() {
               src={"/media/diamond.png"}
               alt="Vercel Logo"
               layout="fill"
-              className="App-logo"
+              className="mx-auto w-[270px]"
             />
           </div>
           <div className="order-last sm:order-first sm:text-right font-thin">
@@ -72,7 +102,7 @@ export default function HomePage() {
             </span>
 
             <AppButton variant="primary" className="text-white" href="/auth">
-              ¿Cómo ingreso?
+              Entrar
             </AppButton>
           </div>
         </div>
@@ -89,7 +119,7 @@ export default function HomePage() {
           <img
             src={"/media/lux-droplet.png"}
             alt="Vercel Logo"
-            className="App-logo w-1/2"
+            className="mx-auto w-[270px]"
           />
         </div>
         <div className="order-last sm:text-left sm:px-9 p-9 text-xl font-thin">
@@ -109,7 +139,7 @@ export default function HomePage() {
           <img
             src={"/media/yachting.png"}
             alt="Vercel Logo"
-            className="App-logo"
+            className="mx-auto w-[270px]"
           />
         </div>
         <div className="order-last sm:order-first sm:text-right p-9 text-xl font-thin">
@@ -119,16 +149,17 @@ export default function HomePage() {
           oportunidades únicas y emocionantes
           <br />
           <br />
-          <a href="/tour" className="text-white">
+          {/* <a href="/tour" className="text-white">
             <u>Tour Virtual</u>
-          </a>
+          </a> */}
+          <AppButton href="/tour"> Tour Virtual </AppButton>
         </div>
       </div>
 
       {/* Actions Box */}
-      <div className="sm:grid sm:grid-cols-2 sm:justify-center sm:items-start mx-9">
-        {/* Signin Box */}
-        <div className="App-box bg-dark-gradient App-auth-bo p-9 mr-0 sm:mr-5">
+      <div className="mx-auto max-w-[600px] mb-9 mx-auto px-5">
+        {/* Box 1 */}
+        <div className="App-box bg-dark-gradient App-auth-box p-9 mr-0 mb-9">
           <b className="text-xl">Trasciende las Olas</b>
 
           <p className="mt-9 font-thin text-lg">
@@ -140,16 +171,10 @@ export default function HomePage() {
             te ofrece la llave para navegar hacia horizontes desconocidos y
             vivir la experiencia definitiva en yates privados.{" "}
           </p>
-
-          <div className="mt-9">
-            <AppButton variant="primary" onClick={startConnection}>
-              ¿Qué es esto?
-            </AppButton>
-          </div>
         </div>
 
-        {/* Signup Box */}
-        <div className="App-box bg-dark-gradient App-auth-box p-9 ml-0 sm:ml-5 mt-9 sm:mt-0">
+        {/* Box 2 */}
+        <div className="App-box bg-dark-gradient App-auth-box p-9 ml-0">
           <b className="text-xl">El Secreto de los Mares</b>
 
           <p className="mt-9 font-thin text-lg">
@@ -164,11 +189,34 @@ export default function HomePage() {
           </p>
 
           <div className="mt-9">
-            <AppButton variant="primary" onClick={startConnection}>
-              ¡Vamos!
-            </AppButton>
+            <AppButton onClick={startConnection}>Conectar</AppButton>
           </div>
         </div>
+      </div>
+
+      {/* Title */}
+      <h1 className="text-white my-12 py-9 max-w-[333px] mx-auto text-2xl">
+        Características
+      </h1>
+
+      {/* Features List */}
+      <div className="project-list sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:justify-center sm:items-center">
+        {featuresData.map((feature, index) => {
+          return (
+            <div className="App-box bg-dark-gradient p-6 m-4 mb-9 sm:mb-0">
+              <img
+                src={feature.imageUrl}
+                alt="Vercel Logo"
+                title={feature.title}
+                className="mx-auto w-[120px] sm:w-[99px]"
+              />
+              <span className="block mt-6 mb-6 mx-auto">{feature.title}</span>
+              <AppButton onClick={() => showFeature(feature)}>
+                Ver más <i className="mdi mdi-information ml-2"></i>
+              </AppButton>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
