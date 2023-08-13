@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 
 import AppAssistant from "@/components/AppAssistant";
+import AppButton from "@/components/IO/AppButton";
 
 const AppVirtualTour = dynamic(() => import("@/components/AppVirtualTour"), {
   ssr: false,
@@ -19,7 +20,7 @@ export default function VRTourPage() {
 
     setTimeout(() => {
       setIsOn(true);
-    }, 3681);
+    }, 999);
 
     // When component unmounted => revert changes
     return () => {
@@ -31,6 +32,16 @@ export default function VRTourPage() {
 
   return (
     <div>
+      {/* Menu */}
+      <AppButton
+        className={"back-btn bg-dark-gradient " + (isOn ? "is-on" : "")}
+        variant="light"
+        onClick={() => (window.location.href = "/")}
+      >
+        <i className="mdi mdi-arrow-left mr-2" />
+        Inicio
+      </AppButton>
+
       {/* Assistant */}
       <AppAssistant isOn={isOn} />
 

@@ -1,11 +1,11 @@
 import Head from "next/head";
 import AppFooter from "../components/AppFooter";
-
-import { NotificationContextProvider } from "@/store/notification-context";
+import AppBackground from "@/components/AppBackground";
 
 import "../styles/app.scss";
 import "../styles/app-assistant.scss";
-import AppBackground from "@/components/AppBackground";
+
+import { NotificationContextProvider } from "@/store/notification-context";
 
 function WhiteLionApp({ Component, pageProps }) {
   return (

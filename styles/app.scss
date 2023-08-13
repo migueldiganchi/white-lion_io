@@ -16,7 +16,6 @@ body {
   font-family: "Josefin Sans", sans-serif !important;
 }
 
-
 // #E6E6E6
 
 body {
@@ -95,8 +94,12 @@ h6 {
 
 // App Classes
 .App-logo {
-  max-width: 190px;
-  margin: auto auto 36px;
+  max-width: 270px;
+  margin: auto auto 46.9px;
+  &_box {
+    margin-bottom: 18.9px;
+    border: solid 1px transparent;
+  }
 }
 
 .App-box {
@@ -119,6 +122,18 @@ h6 {
     font-size: 15.3px;
     line-height: -1 !important;
     font-weight: normal;
+  }
+
+  &.back-btn {
+    transition: all 0.3s ease-in-out;
+    position: fixed;
+    top: -333px;
+    left: 27px;
+    z-index: 9999;
+
+    &.is-on {
+      top: 27px;
+    }
   }
 
   &:hover {
@@ -160,13 +175,14 @@ h6 {
 }
 
 .lines {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   height: 100%;
   margin: auto;
-  width: 90vw;
+  width: 100vw;
 }
 
 .line {
@@ -174,6 +190,7 @@ h6 {
   width: 1px;
   height: 100%;
   top: 0;
+  // left: 49.66%;
   left: 50%;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
@@ -219,4 +236,31 @@ h6 {
   100% {
     top: 110%;
   }
+}
+
+/* scroll-styles.css */
+
+/* Estilo del contenedor que tendrá el scroll */
+body {
+  width: 100%;
+  overflow: overlay; /* Habilita el scroll y mantiene visible el scrollbar */
+}
+
+/* Estilo del scrollbar */
+body::-webkit-scrollbar {
+  width: 6px; /* Grosor del scrollbar */
+  background-color: #999; /* Fondo transparente para mantener el scrollbar visible */
+  cursor: pointer !important;
+}
+
+/* Estilo del thumb del scrollbar */
+body::-webkit-scrollbar-thumb {
+  background-color: #fce4a6; /* Color del thumb */
+  border-radius: 6px; /* Borde redondeado */
+  cursor: pointer !important;
+}
+
+/* Cambiar el tamaño del thumb al pasar el mouse */
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #fbdd93; /* Nuevo color al pasar el mouse */
 }
