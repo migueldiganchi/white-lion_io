@@ -11,9 +11,7 @@ export default function VRTourPage() {
   const [isOn, setIsOn] = useState(false);
 
   useEffect(() => {
-    // Esta función se ejecutará después de que el componente se monte en el DOM
-
-    // Modificar el estilo del elemento principal
+    // When component mount => Give all width to the current screen
     const nextDiv = document.getElementById("__next");
     if (nextDiv) {
       nextDiv.style.width = "100%";
@@ -23,13 +21,13 @@ export default function VRTourPage() {
       setIsOn(true);
     }, 3681);
 
-    // Limpieza: revertir los cambios cuando el componente se desmonte
+    // When component unmounted => revert changes
     return () => {
       if (nextDiv) {
-        nextDiv.style.width = ""; // Revertir el estilo al valor predeterminado
+        nextDiv.style.width = "";
       }
     };
-  }, []); // El array de dependencias vacío asegura que se ejecute solo una vez
+  }, []); // Run only once
 
   return (
     <div>

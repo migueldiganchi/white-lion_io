@@ -5,6 +5,7 @@ import { NotificationContextProvider } from "@/store/notification-context";
 
 import "../styles/app.scss";
 import "../styles/app-assistant.scss";
+import AppBackground from "@/components/AppBackground";
 
 function WhiteLionApp({ Component, pageProps }) {
   return (
@@ -23,6 +24,9 @@ function WhiteLionApp({ Component, pageProps }) {
           href="https://cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css"
         />
       </Head>
+
+      {/* Background effect */}
+      <AppBackground />
 
       {/* Body */}
       <div key="whiteLionApp" className="rounded-xl text-center main-box">
