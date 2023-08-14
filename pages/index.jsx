@@ -93,9 +93,9 @@ export default function HomePage() {
         </h3>
 
         {/* Description */}
-        <p className="mt-6 leading-7 max-w-[333px] font-thin text-center mx-auto text-white text-3xl">
-          Únete a la épica odisea <b className="text-gold">reservada</b> para
-          los audaces exploradores del futuro.
+        <p className="mt-6 leading-8 max-w-[450px] font-thin text-center mx-auto text-white text-3xl">
+          Únete a la <b>épica</b> odisea <b className="text-gold">reservada</b>{" "}
+          para los audaces <b>exploradores del futuro</b>.
         </p>
       </div>
 
@@ -111,12 +111,11 @@ export default function HomePage() {
             />
           </div>
           <div className="order-last sm:order-first sm:text-right font-thin">
-            <span className="text-xl block mb-9">
-              Sumérgete en una <b>experiencia única</b> donde los límites de la
-              realidad se difuminan. Nuestro <b>asistente virtual</b> te guiará
-              a través de un mundo de contenidos fascinantes, mientras responde
-              tus preguntas con información precisa y útil. Explora sin límites,
-              con un compañero virtual que está siempre a tu lado, llevando la{" "}
+            <span className="text-xl block mb-9 pb-3">
+              Nuestro <b>asistente virtual</b> te guiará a través de un mundo de
+              contenidos fascinantes, mientras responde tus preguntas con
+              información precisa y útil. Explora sin límites, con un compañero
+              virtual que está siempre a tu lado, llevando la{" "}
               <b>inmersión a un nuevo nivel</b>.
             </span>
 
@@ -187,7 +186,7 @@ export default function HomePage() {
         <div className="App-box bg-dark-gradient App-auth-box p-9 mr-0 mb-9">
           <b className="text-xl">Trasciende las Olas</b>
 
-          <p className="mt-9 font-thin text-lg">
+          <p className="mt-9 font-thin text-xl">
             Despierta tu espíritu aventurero en{" "}
             <b>
               <span className="text-white">White</span> Lion
@@ -202,7 +201,7 @@ export default function HomePage() {
         <div className="App-box bg-dark-gradient App-auth-box p-9 ml-0">
           <b className="text-xl">El Secreto de los Mares</b>
 
-          <p className="mt-9 font-thin text-lg">
+          <p className="mt-9 font-thin text-xl">
             En{" "}
             <b>
               <span className="text-white">White</span> Lion
