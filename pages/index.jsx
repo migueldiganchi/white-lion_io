@@ -112,11 +112,11 @@ export default function HomePage() {
           </div>
           <div className="order-last sm:order-first sm:text-right font-thin">
             <span className="text-xl block mb-9 pb-3">
-              Nuestro <b>asistente virtual</b> te guiará a través de un mundo de
-              contenidos fascinantes, mientras responde tus preguntas con
-              información precisa y útil. Explora sin límites, con un compañero
-              virtual que está siempre a tu lado, llevando la{" "}
-              <b>inmersión a un nuevo nivel</b>.
+              Nuestro <b>asistente virtual</b> te conducirá en un apasionante
+              recorrido, brindándote información precisa y valiosa mientras
+              respondiendo tus preguntas frecuentes. <b>Explora sin límites</b>,
+              con un compañero siempre a tu lado, llevando la inmersión a un{" "}
+              <b>nivel superior</b>
             </span>
 
             <AppButton variant="primary" className="text-white" href="/tour">

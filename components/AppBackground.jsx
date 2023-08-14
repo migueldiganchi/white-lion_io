@@ -6,6 +6,7 @@ export default function AppBackground() {
       <div className="line"></div>
       <div className="line"></div>
       <div className="line"></div>
+      <div className="line"></div>
     </div>
   );
 }

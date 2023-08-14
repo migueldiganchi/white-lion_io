@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const AppFooter = () => {
   return (
-    <div className="App-footer my-12 pb-12">
+    <div className="App-footer text-center my-12 pb-12">
       <Link href={"/"}>
         {" "}
         <b className="text-[21px] mb-3 block">
