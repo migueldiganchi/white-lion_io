@@ -11,8 +11,12 @@ const AppVirtualTour = dynamic(() => import("@/components/AppVirtualTour"), {
 export default function VRTourPage() {
   const [isOn, setIsOn] = useState(false);
 
+  const goHome = () => {
+    window.location.href = "/";
+  };
+
   useEffect(() => {
-    // When component mount => Give all width to the current screen
+    // When component is mounted => Give all width to the current screen
     const nextDiv = document.getElementById("__next");
     if (nextDiv) {
       nextDiv.style.width = "100%";
@@ -20,9 +24,9 @@ export default function VRTourPage() {
 
     setTimeout(() => {
       setIsOn(true);
-    }, 999);
+    }, 4500);
 
-    // When component unmounted => revert changes
+    // When component is unmounted => revert changes
     return () => {
       if (nextDiv) {
         nextDiv.style.width = "";
@@ -32,14 +36,14 @@ export default function VRTourPage() {
 
   return (
     <div>
-      {/* Menu */}
+      {/* Go Back Button */}
       <AppButton
         className={"back-btn bg-dark-gradient " + (isOn ? "is-on" : "")}
         variant="light"
-        onClick={() => (window.location.href = "/")}
+        onClick={goHome}
       >
-        <i className="mdi mdi-arrow-left mr-2" />
-        Inicio
+        <i className="mdi mdi-home mr-2" />
+        Ir al Inicio
       </AppButton>
 
       {/* Assistant */}

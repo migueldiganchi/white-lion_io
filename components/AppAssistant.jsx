@@ -91,12 +91,6 @@ const AppAssistant = ({ isOn }) => {
       // Decode JSON Response Data
       const apiResponseData = await apiResponse.json();
 
-      notificationCtx.showNotification({
-        title: "Enviado!",
-        message: "El mensaje se ha enviado correctamente",
-        variant: "success",
-      });
-
       // Add Bot Message to Conversation
       setConversation((prevConversation) => [
         ...prevConversation,
@@ -144,7 +138,7 @@ const AppAssistant = ({ isOn }) => {
         }
       >
         <AppButton variant={"light"} onClick={startAssistant}>
-          ¡Hola! <i className="mdi mdi-robot" />
+          Asistente <i className="mdi mdi-robot" />
         </AppButton>
       </div>
 
@@ -156,10 +150,25 @@ const AppAssistant = ({ isOn }) => {
         } ${isActive ? "active" : ""}`}
       >
         {conversation.length === 0 ? (
-          <h3 className="mb-4 text-white font-thin">
-            Hola, soy <b>Ángela</b>, la asistente Virtual de <b>White Lion</b>,
-            ¿Cómo puedo ayudarte?
-          </h3>
+          <div>
+            <img
+              src={"/media/bot-avatar.png"}
+              className="avatar max-w-[90px] mx-auto mb-6"
+            />
+
+            <h3
+              className={
+                "mb-4 text-white font-thin text-gold " +
+                (isActive ? "animate__animated animate__fadeIn " : "")
+              }
+            >
+              Hola, soy <b>Ángela</b>, la asistente Virtual de{" "}
+              <b>
+                <span className="text-white">White</span> Lion
+              </b>
+              , ¿Cómo puedo ayudarte?
+            </h3>
+          </div>
         ) : (
           <AppConversation messages={conversation} />
         )}
@@ -174,26 +183,36 @@ const AppAssistant = ({ isOn }) => {
             placeholder="Escribe aquí tu pregunta..."
           />
 
-          <div className="mt-6" />
+          <div className="my-9 text-white">
+            {isWaiting && (
+              <span className="chat-message">
+                <span className="typing-dots">...</span>
+              </span>
+            )}
+          </div>
 
-          <AppButton
-            variant={"light"}
-            onClick={cancelAssistant}
-            className="mr-3"
-            isCircular
-          >
-            <i className="mdi mdi-close mr-2" />
-            Cancelar
-          </AppButton>
+          {!isWaiting && (
+            <div className="App-actions mb-3">
+              <AppButton
+                variant={"light"}
+                onClick={cancelAssistant}
+                className="mr-3"
+                isCircular
+              >
+                <i className="mdi mdi-close mr-2" />
+                Cancelar
+              </AppButton>
 
-          <AppButton
-            type="submit"
-            variant={"light"}
-            disabled={isWaiting || inputValue == ""}
-          >
-            Enviar
-            <i className="mdi mdi-check ml-2" />
-          </AppButton>
+              <AppButton
+                type="submit"
+                variant={"light"}
+                disabled={isWaiting || inputValue == ""}
+              >
+                Enviar
+                <i className="mdi mdi-check ml-2" />
+              </AppButton>
+            </div>
+          )}
         </form>
       </div>
     </div>

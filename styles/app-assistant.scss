@@ -1,7 +1,7 @@
 @import "app-mixins.scss";
 
 .App-assistant {
-  @include box-shadow;
+  @include box-shadow-light;
   transition: all 0.3s ease-in-out;
   border: solid 3px #fce4a6;
   position: fixed;

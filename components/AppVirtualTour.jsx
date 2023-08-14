@@ -5,29 +5,28 @@ import scenesData from "@/data/scenes";
 export default function Scene() {
   const [scene, setScene] = useState(scenesData["stairScene"]);
   const mountRef = useRef(null);
-
-  // After load all DOM we clear all prev mounted elements
-  useEffect(() => {
-    const currentRef = mountRef.current;
-
-    return () => {
-      for (let i = currentRef.children.length - 1; i >= 0; i--) {
-        const child = currentRef.children[i];
-        currentRef.removeChild(child);
-      }
-    };
-  }, []);
+  const pannellumRef = useRef(null);
 
   // Open Information Modal
   const openModal = () => {
     alert("Open Information Modal");
   };
 
+  // Render Customized Hotspot
   const renderHotspot = (hotSpotDiv, args) => {
     hotSpotDiv.classList.add("custom-tooltip");
     var span = document.createElement("span");
     span.innerHTML = args.text;
     hotSpotDiv.appendChild(span);
+  };
+
+  const handleLoader = () => {
+    setTimeout(() => {
+      const loadingTextElement = document.querySelector(".pnlm-load-box p");
+      if (loadingTextElement) {
+        loadingTextElement.innerHTML = "Cargando...";
+      }
+    }, 33);
   };
 
   // Hot Spot List
@@ -60,15 +59,31 @@ export default function Scene() {
           tooltip={renderHotspot}
           tooltipArg={{ text: element.text }}
           handleClick={() => {
+            handleLoader();
             setScene(scenesData[element.scene]);
           }}
         />
       );
   };
 
+  // After load all DOM we clear all prev mounted elements
+  useEffect(() => {
+    const currentRef = mountRef.current;
+
+    handleLoader();
+
+    return () => {
+      for (let i = currentRef.children.length - 1; i >= 0; i--) {
+        const child = currentRef.children[i];
+        currentRef.removeChild(child);
+      }
+    };
+  }, []);
+
   return (
     <div ref={mountRef}>
       <Pannellum
+        ref={pannellumRef}
         width={"100%"}
         height={"100vh"}
         title={scene.title}
@@ -76,7 +91,7 @@ export default function Scene() {
         pitch={-16.28}
         yaw={-1.66}
         hfov={130}
-        autoLoad
+        autoLoad={true}
         showControls={false}
         showFullscreenCtrl={false}
         showZoomCtrl={false}

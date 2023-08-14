@@ -1,13 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import AppNotification from "@/components/AppNotification";
 import AppButton from "../components/IO/AppButton";
 import NotificationContext from "@/store/notification-context";
 import AppFeatures from "@/components/AppFeatures";
+import AppAssistant from "@/components/AppAssistant";
 
 export default function HomePage() {
   const notificationCtx = useContext(NotificationContext);
   const activeNotification = notificationCtx.notification;
+  const [isAssistantOn, setIsAssistantOn] = useState(false);
 
   const startConnection = () => {
     alert("@todo: Start Connection");
@@ -50,6 +52,12 @@ export default function HomePage() {
     },
   ];
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsAssistantOn(true);
+    }, 999);
+  }, []);
+
   return (
     <div
       key="main"
@@ -64,6 +72,9 @@ export default function HomePage() {
         />
       )}
 
+      {/* Assistant */}
+      <AppAssistant isOn={isAssistantOn} />
+
       {/* Main Box */}
       <div className="mx-6 sm:mx-9 p-9 mb-9">
         {/* Logo Image */}
@@ -77,8 +88,8 @@ export default function HomePage() {
         </div>
 
         {/* Title */}
-        <h3 className="text-3xl font-bold">
-          Bienvenid@s a <b className="text-white">White </b>Lion
+        <h3 className="text-5xl sm:text-6xl mb-9 font-bold">
+          <b className="text-white">White </b>Lion
         </h3>
 
         {/* Description */}
@@ -129,7 +140,7 @@ export default function HomePage() {
           <img
             src={"/media/diamond.png"}
             alt="Vercel Logo"
-            className="mx-auto w-[240px]"
+            className="mx-auto w-[243px]"
           />
         </div>
         <div className="order-last sm:text-left sm:px-9 p-9 text-2xl">
@@ -144,9 +155,9 @@ export default function HomePage() {
       <div className="mt-9 mb-12 pb-12 sm:grid sm:grid-cols-2 sm:justify-center sm:items-center">
         <div className="order-first sm:order-last">
           <img
-            src={"/media/yachting.png"}
+            src={"/media/yacht.png"}
             alt="Vercel Logo"
-            className="mx-auto w-[240px]"
+            className="mx-auto w-[270px]"
           />
         </div>
         <div className="order-last sm:order-first sm:text-right p-9 text-2xl">

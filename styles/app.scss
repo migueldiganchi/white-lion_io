@@ -14,6 +14,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Josefin Sans", sans-serif !important;
+  text-shadow: 1px 1px 1px #000;
 }
 
 // #E6E6E6
@@ -118,6 +119,7 @@ h6 {
   color: #fff !important;
   transition: all 0.3s ease;
   font-size: 15.3px;
+  text-shadow: none !important;
   span {
     font-size: 15.3px;
     line-height: -1 !important;
@@ -263,4 +265,42 @@ body::-webkit-scrollbar-thumb {
 /* Cambiar el tamaño del thumb al pasar el mouse */
 body::-webkit-scrollbar-thumb:hover {
   background-color: #fbdd93; /* Nuevo color al pasar el mouse */
+}
+
+.pnlm-lmsg {
+  display: none;
+}
+
+.pnlm-load-box {
+  @include border-radius(18px);
+  @include box-shadow;
+  height: initial !important;
+  padding-bottom: 19px;
+  border: solid 3px #fce4a6;
+}
+
+.chat-message {
+  position: relative;
+  border-radius: 10px;
+  width: 250px;
+}
+
+.typing-dots {
+  display: inline-block;
+  margin-right: 5px;
+  animation: typing 1s infinite;
+  font-size: 36px !important;
+  line-height: 0.9px;
+}
+
+@keyframes typing {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
 }

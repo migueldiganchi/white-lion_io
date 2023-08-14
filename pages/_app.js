@@ -1,3 +1,5 @@
+import { useRouter } from "next/router";
+
 import Head from "next/head";
 import AppFooter from "../components/AppFooter";
 import AppBackground from "@/components/AppBackground";
@@ -8,6 +10,10 @@ import "../styles/app-assistant.scss";
 import { NotificationContextProvider } from "@/store/notification-context";
 
 function WhiteLionApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  const isTourPage = router.pathname === "/tour";
+
   return (
     <NotificationContextProvider>
       {/*  Head */}
@@ -29,14 +35,21 @@ function WhiteLionApp({ Component, pageProps }) {
       <AppBackground />
 
       {/* Body */}
-      <div key="whiteLionApp" className="rounded-xl text-center main-box">
+      <div
+        key="whiteLionApp"
+        className={
+          "rounded-xl text-center main-box " + (!isTourPage ? "mt-9" : "")
+        }
+      >
         <Component key="body" {...pageProps} />
       </div>
 
       {/* // Footer */}
-      <div key="footer-box" className="text-center">
-        <AppFooter />
-      </div>
+      {!isTourPage && (
+        <div key="footer-box" className="text-center">
+          <AppFooter />
+        </div>
+      )}
     </NotificationContextProvider>
   );
 }

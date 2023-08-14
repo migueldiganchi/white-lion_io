@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const AppConversation = ({ messages }) => {
   const [currentIndex, setCurrentIndex] = useState(messages.length - 1);
+  const [isShowingMessage, setIsShowingMessage] = useState(false);
 
   const goToPreviousMessage = () => {
     if (currentIndex > 0) {
@@ -24,6 +25,11 @@ const AppConversation = ({ messages }) => {
   };
 
   useEffect(() => {
+    setIsShowingMessage(true);
+    setTimeout(() => {
+      setIsShowingMessage(false);
+    }, 999);
+
     setCurrentIndex(messages.length - 1); // Mostrar siempre el último mensaje
   }, [messages]);
 
@@ -32,7 +38,7 @@ const AppConversation = ({ messages }) => {
   return (
     <div className="app-conversation w-[270px]">
       <div className="message">
-        <div className="profile">
+        <div className="profile mt-3">
           <img
             src={
               currentMessage.type === "user"
@@ -42,15 +48,22 @@ const AppConversation = ({ messages }) => {
             alt={currentMessage.type === "user" ? "User Avatar" : "Bot Avatar"}
             className="avatar max-w-[90px] mx-auto mb-6"
           />
-          <span className="name text-white text-lg mb-4">
+          <span className="text-white text-lg block mb-3">
             {currentMessage.type === "user" ? "Tú" : "Ángela"}
           </span>
         </div>
-        <div className="message-content text-sm text-white mb-3">
+        <div
+          className={
+            "message-content text-sm text-white mb-3 text-gold " +
+            (isShowingMessage ? "animate__animated animate__fadeIn" : "")
+          }
+        >
           {currentMessage.message}
         </div>
       </div>
-      <div className="message-navigation mb-1">
+
+      {/* Chat Navigation */}
+      <div className="message-navigation mb-5">
         <button
           className={`message-navigation-btn text-white ${
             currentIndex === 0
@@ -97,11 +110,13 @@ const AppConversation = ({ messages }) => {
         </button>
       </div>
 
-      <div className="text-center mb-5 text-gray-400">
-        <small>
-          {currentIndex + 1} de {messages.length}
-        </small>
-      </div>
+      {false && (
+        <div className="text-center mb-5 text-gray-600">
+          <small>
+            {currentIndex + 1} de {messages.length}
+          </small>
+        </div>
+      )}
     </div>
   );
 };
