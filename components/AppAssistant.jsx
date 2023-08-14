@@ -152,7 +152,7 @@ const AppAssistant = ({ isOn }) => {
         {conversation.length === 0 ? (
           <div>
             <img
-              src={"/media/bot-avatar.png"}
+              src={"/media/woman.png"}
               className="avatar max-w-[90px] mx-auto mb-6"
             />
 

@@ -43,7 +43,7 @@ const AppConversation = ({ messages }) => {
             src={
               currentMessage.type === "user"
                 ? "/media/user-avatar.png"
-                : "/media/bot-avatar.png"
+                : "/media/woman.png"
             }
             alt={currentMessage.type === "user" ? "User Avatar" : "Bot Avatar"}
             className="avatar max-w-[90px] mx-auto mb-6"

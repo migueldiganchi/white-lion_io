@@ -73,7 +73,7 @@ export default function HomePage() {
       )}
 
       {/* Assistant */}
-      <AppAssistant isOn={isAssistantOn} />
+      {false && <AppAssistant isOn={isAssistantOn} />}
 
       {/* Main Box */}
       <div className="mx-6 sm:mx-9 p-9 mb-9">
@@ -93,18 +93,16 @@ export default function HomePage() {
         </h3>
 
         {/* Description */}
-        <p className="mt-6 leading-6 text-[21.6px] max-w-[333px] font-thin text-center mx-auto text-white">
-          Adéntrate en un cosmos encantado con la <b>Inteligencia Artificial</b>
-          &nbsp;como guía. Únete a la épica odisea{" "}
-          <b className="text-gold">reservada</b> para los audaces exploradores
-          del futuro.
+        <p className="mt-6 leading-7 max-w-[333px] font-thin text-center mx-auto text-white text-3xl">
+          Únete a la épica odisea <b className="text-gold">reservada</b> para
+          los audaces exploradores del futuro.
         </p>
       </div>
 
       {/* Purpose Box */}
       <div className="App-box mx-9 sm:mx-9 p-9 bg-dark-gradient mb-9">
         <div className="sm:grid sm:grid-cols-2 sm:justify-center sm:items-center">
-          <div className="order-first sm:order-last">
+          <div className="order-first sm:order-last mb-6 sm:mb-0">
             <img
               src={"/media/features/vr.png"}
               alt="Vercel Logo"
@@ -118,8 +116,8 @@ export default function HomePage() {
               realidad se difuminan. Nuestro <b>asistente virtual</b> te guiará
               a través de un mundo de contenidos fascinantes, mientras responde
               tus preguntas con información precisa y útil. Explora sin límites,
-              con un compañero virtual que está siempre a tu lado, llevando la
-              inmersión a un nuevo nivel.
+              con un compañero virtual que está siempre a tu lado, llevando la{" "}
+              <b>inmersión a un nuevo nivel</b>.
             </span>
 
             <AppButton variant="primary" className="text-white" href="/tour">
