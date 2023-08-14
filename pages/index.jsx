@@ -100,7 +100,7 @@ export default function HomePage() {
       </div>
 
       {/* Purpose Box */}
-      <div className="App-box mx-9 sm:mx-9 p-9 bg-dark-gradient mb-9">
+      <div className="App-box mx-6 sm:mx-9 p-9 bg-dark-gradient mb-9">
         <div className="sm:grid sm:grid-cols-2 sm:justify-center sm:items-center">
           <div className="order-first sm:order-last mb-6 sm:mb-0">
             <img
